@@ -1,155 +1,984 @@
 <!DOCTYPE html>
-<!--
-  ================================================================
-  READ THIS BEFORE YOU PASTE ANYTHING
-
-  When Gemini gives you a page, you do NOT paste it into a part of
-  this file. You replace the entire file.
-
-  Click into the editor, press Ctrl+A (Cmd+A on Mac), press Delete,
-  then paste. Everything here is meant to be thrown away.
-
-  Do that only AFTER your live link works. Get the link first.
-  ================================================================
--->
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>My first site</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Unbounded:wght@600;800&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --navy: #0d1d30;
-    --card: #142a44;
-    --line: #27466a;
-    --aqua: #6de1d7;
-    --text: #ffffff;
-    --muted: #94a9bf;
-  }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    background: var(--navy);
-    color: var(--text);
-    font-family: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
-    line-height: 1.6;
-    display: flex;
-    justify-content: center;
-    padding: 6vh 20px;
-  }
-  main { width: 100%; max-width: 640px; }
-  .badge {
-    display: inline-block;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--aqua);
-    margin-bottom: 18px;
-  }
-  h1 {
-    font-family: "Unbounded", "Manrope", sans-serif;
-    font-weight: 800;
-    font-size: clamp(38px, 9vw, 68px);
-    letter-spacing: -0.05em;
-    line-height: 1.02;
-    margin: 0 0 8px;
-  }
-  .name {
-    font-family: "Unbounded", "Manrope", sans-serif;
-    font-weight: 600;
-    font-size: clamp(18px, 4vw, 24px);
-    letter-spacing: -0.04em;
-    color: var(--aqua);
-    margin: 0 0 24px;
-  }
-  p.lead { font-size: 18px; color: var(--muted); margin: 0 0 34px; }
-  .card {
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    padding: 26px 28px;
-    margin-bottom: 18px;
-  }
-  .card h2 {
-    font-family: "Unbounded", "Manrope", sans-serif;
-    font-weight: 600;
-    font-size: 15px;
-    letter-spacing: -0.03em;
-    text-transform: uppercase;
-    color: var(--aqua);
-    margin: 0 0 16px;
-  }
-  ol { margin: 0; padding-left: 20px; }
-  li { margin-bottom: 12px; color: var(--muted); }
-  li:last-child { margin-bottom: 0; }
-  li b { color: var(--text); font-weight: 700; }
-  code {
-    font-family: ui-monospace, "SF Mono", Consolas, monospace;
-    font-size: 0.92em;
-    background: #0a1727;
-    border: 1px solid var(--line);
-    border-radius: 5px;
-    padding: 1px 6px;
-    color: var(--aqua);
-  }
-  a { color: var(--aqua); }
-  footer {
-    margin-top: 30px;
-    font-size: 14px;
-    color: #6e839a;
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verdant — Sanctuary of Nature & Mindfulness</title>
+    <!-- Google Font (Single Link Allowed) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ==========================================================================
+           1. CSS VARIABLES & THEMING
+           ========================================================================== */
+        :root {
+            --bg-main: #f4f7f2;
+            --bg-card: #ffffff;
+            --bg-card-hover: #f8faf6;
+            --text-primary: #1e2c21;
+            --text-secondary: #4a5d4e;
+            --text-muted: #788a7c;
+            --accent-moss: #3a5a40;
+            --accent-leaf: #588157;
+            --accent-sage: #a3b18a;
+            --accent-sand: #dad7cd;
+            --accent-earth: #8c6239;
+            --accent-soft: #e9edc9;
+            --border-color: #d8e2dc;
+            --glass-bg: rgba(255, 255, 255, 0.75);
+            --glass-border: rgba(255, 255, 255, 0.4);
+            --shadow-sm: 0 4px 12px rgba(30, 44, 33, 0.04);
+            --shadow-md: 0 8px 24px rgba(30, 44, 33, 0.08);
+            --shadow-lg: 0 16px 40px rgba(30, 44, 33, 0.12);
+            --radius-sm: 12px;
+            --radius-md: 20px;
+            --radius-lg: 32px;
+            --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        [data-theme="dusk"] {
+            --bg-main: #121b14;
+            --bg-card: #1a261c;
+            --bg-card-hover: #223225;
+            --text-primary: #ecefe6;
+            --text-secondary: #b5c4b7;
+            --text-muted: #728575;
+            --accent-moss: #588157;
+            --accent-leaf: #a3b18a;
+            --accent-sage: #3a5a40;
+            --accent-sand: #2d3b2f;
+            --accent-earth: #d4a373;
+            --accent-soft: #233326;
+            --border-color: #27382a;
+            --glass-bg: rgba(26, 38, 28, 0.8);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.2);
+            --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.3);
+            --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        /* ==========================================================================
+           2. BASE STYLES & RESET
+           ========================================================================== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+
+        body {
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button {
+            font-family: inherit;
+            cursor: pointer;
+            border: none;
+            background: none;
+            outline: none;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-main);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-sage);
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-leaf);
+        }
+
+        /* Utility Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .text-center { text-align: center; }
+
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 16px;
+            background: var(--accent-soft);
+            color: var(--accent-moss);
+            font-size: 0.85rem;
+            font-weight: 600;
+            border-radius: 50px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 48px auto;
+        }
+
+        /* ==========================================================================
+           3. NAVIGATION
+           ========================================================================== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 0;
+            transition: var(--transition-smooth);
+        }
+
+        .navbar.scrolled {
+            padding: 12px 0;
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--glass-border);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: -0.5px;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--accent-moss);
+            border-radius: 50% 0 50% 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover .logo-icon {
+            transform: rotate(-15deg) scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+            list-style: none;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: var(--transition-smooth);
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-moss);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-leaf);
+            transition: width 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .icon-btn {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition-smooth);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .icon-btn:hover {
+            transform: translateY(-2px);
+            background: var(--accent-soft);
+            color: var(--accent-moss);
+            border-color: var(--accent-sage);
+        }
+
+        .mobile-toggle {
+            display: none;
+        }
+
+        /* ==========================================================================
+           4. HERO SECTION WITH CANVAS
+           ========================================================================== */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 100px;
+            overflow: hidden;
+        }
+
+        #heroCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: auto;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 720px;
+            pointer-events: none; /* Let canvas get mouse events behind text where needed */
+        }
+
+        .hero-content * {
+            pointer-events: auto;
+        }
+
+        .hero-title {
+            font-size: clamp(2.8rem, 6vw, 4.5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: -1.5px;
+        }
+
+        .hero-title span {
+            color: var(--accent-moss);
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-desc {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            max-width: 580px;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition-smooth);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-primary {
+            background: var(--accent-moss);
+            color: #ffffff;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-leaf);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-secondary {
+            background: var(--glass-bg);
+            backdrop-filter: blur(8px);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-card);
+            transform: translateY(-3px);
+            border-color: var(--accent-sage);
+        }
+
+        /* ==========================================================================
+           5. SOUNDSCAPE GENERATOR (Web Audio API)
+           ========================================================================== */
+        .soundscape {
+            background: var(--bg-card);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .sound-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
+            margin-top: 32px;
+        }
+
+        .sound-card {
+            background: var(--bg-main);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: var(--transition-smooth);
+        }
+
+        .sound-card:hover {
+            border-color: var(--accent-sage);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .sound-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--accent-soft);
+            color: var(--accent-moss);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            font-size: 1.5rem;
+            transition: var(--transition-smooth);
+        }
+
+        .sound-card.active .sound-icon {
+            background: var(--accent-moss);
+            color: white;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(58, 90, 64, 0.4); }
+            70% { box-shadow: 0 0 0 12px rgba(58, 90, 64, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(58, 90, 64, 0); }
+        }
+
+        .sound-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .volume-slider {
+            width: 100%;
+            -webkit-appearance: none;
+            appearance: none;
+            height: 6px;
+            border-radius: 3px;
+            background: var(--border-color);
+            outline: none;
+            margin-top: 12px;
+        }
+
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--accent-moss);
+            cursor: pointer;
+            transition: transform 0.1s ease;
+        }
+
+        .volume-slider::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+        }
+
+        .sound-controls-main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+            margin-top: 40px;
+        }
+
+        /* ==========================================================================
+           6. FLORA & ECOSYSTEM EXPLORER
+           ========================================================================== */
+        .flora-filters {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 8px 20px;
+            border-radius: 50px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition-smooth);
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--accent-moss);
+            color: white;
+            border-color: var(--accent-moss);
+        }
+
+        .flora-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 32px;
+        }
+
+        .flora-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: var(--transition-smooth);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .flora-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--accent-sage);
+        }
+
+        .flora-img-wrapper {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
+            background: var(--accent-sand);
+        }
+
+        .flora-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .flora-card:hover .flora-img {
+            transform: scale(1.08);
+        }
+
+        .flora-tag {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(8px);
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .flora-body {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .flora-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .flora-latin {
+            font-size: 0.85rem;
+            font-style: italic;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+
+        .flora-desc {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .flora-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--border-color);
+            padding-top: 16px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* ==========================================================================
+           7. BREATHING / MINDFULNESS EXERCISE
+           ========================================================================== */
+        .breathing-section {
+            background: linear-gradient(135deg, var(--bg-card) 0%, var(--accent-soft) 100%);
+            border-radius: var(--radius-lg);
+            padding: 60px 32px;
+            margin: 40px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .breath-container {
+            position: relative;
+            width: 240px;
+            height: 240px;
+            margin: 40px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .breath-circle-outer {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 2px dashed var(--accent-sage);
+            animation: spinSlow 30s linear infinite;
+        }
+
+        @keyframes spinSlow {
+            100% { transform: rotate(360deg); }
+        }
+
+        .breath-circle {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: var(--accent-moss);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            box-shadow: 0 0 30px rgba(58, 90, 64, 0.3);
+            transition: transform 4s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.5s ease;
+        }
+
+        .breath-circle.inhale {
+            transform: scale(1.6);
+            background: var(--accent-leaf);
+        }
+
+        .breath-circle.hold {
+            transform: scale(1.6);
+            background: var(--accent-earth);
+        }
+
+        .breath-circle.exhale {
+            transform: scale(1);
+            background: var(--accent-moss);
+        }
+
+        .breath-instruction {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            min-height: 30px;
+            margin-bottom: 24px;
+        }
+
+        /* ==========================================================================
+           8. JOURNAL / REFLECTION SECTION
+           ========================================================================== */
+        .journal-container {
+            background: var(--bg-card);
+            border-radius: var(--radius-md);
+            padding: 40px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .journal-input {
+            width: 100%;
+            height: 120px;
+            padding: 16px;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-color);
+            background: var(--bg-main);
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 1rem;
+            resize: vertical;
+            outline: none;
+            transition: var(--transition-smooth);
+            margin-bottom: 16px;
+        }
+
+        .journal-input:focus {
+            border-color: var(--accent-moss);
+            box-shadow: 0 0 0 3px rgba(58, 90, 64, 0.1);
+        }
+
+        .journal-entries {
+            margin-top: 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .entry-card {
+            background: var(--bg-main);
+            padding: 20px;
+            border-radius: var(--radius-sm);
+            border-left: 4px solid var(--accent-moss);
+            position: relative;
+        }
+
+        .entry-date {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .entry-text {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+
+        /* ==========================================================================
+           9. FOOTER
+           ========================================================================== */
+        .footer {
+            background: var(--bg-card);
+            border-top: 1px solid var(--border-color);
+            padding: 60px 0 30px 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr repeat(3, 1fr);
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand p {
+            color: var(--text-secondary);
+            margin-top: 12px;
+            max-width: 300px;
+        }
+
+        .footer-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-link {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            transition: var(--transition-smooth);
+        }
+
+        .footer-link:hover {
+            color: var(--accent-moss);
+        }
+
+        .footer-bottom {
+            padding-top: 30px;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* ==========================================================================
+           10. RESPONSIVE DESIGN
+           ========================================================================== */
+        @media (max-width: 900px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: var(--bg-card);
+                flex-direction: column;
+                padding: 30px;
+                gap: 20px;
+                border-bottom: 1px solid var(--border-color);
+                transform: translateY(-150%);
+                transition: transform 0.4s ease;
+                box-shadow: var(--shadow-md);
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+            }
+
+            .mobile-toggle {
+                display: flex;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 12px;
+                text-align: center;
+            }
+        }
+    </style>
 </head>
 <body>
-<main>
 
-  <span class="badge">Cal Poly Vibe Coding &middot; Session 01</span>
+    <!-- NAVIGATION -->
+    <header class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+                </div>
+                Verdant
+            </a>
 
-  <h1>It&rsquo;s live.</h1>
+            <nav>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#hero" class="nav-link">Home</a></li>
+                    <li><a href="#soundscape" class="nav-link">Soundscape</a></li>
+                    <li><a href="#flora" class="nav-link">Flora Explorer</a></li>
+                    <li><a href="#mindfulness" class="nav-link">Breathing</a></li>
+                    <li><a href="#journal" class="nav-link">Reflection</a></li>
+                </ul>
+            </nav>
 
-  <!-- Step 5: change the name below to yours, then commit. -->
-  <p class="name">Built by Nate Yee </p>
+            <div class="nav-actions">
+                <button class="icon-btn" id="themeToggle" title="Toggle Theme" aria-label="Toggle Theme">
+                    <svg id="themeIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+                </button>
+                <button class="icon-btn mobile-toggle" id="mobileToggle" aria-label="Toggle Mobile Menu">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+                </button>
+            </div>
+        </div>
+    </header>
 
-  <p class="lead">
-    This page is on the internet. Anyone you send this link to can open it,
-    on any device, right now. You made that happen in about five minutes.
-  </p>
+    <main>
+        <!-- HERO SECTION -->
+        <section class="hero" id="hero">
+            <canvas id="heroCanvas"></canvas>
+            <div class="container">
+                <div class="hero-content">
+                    <span class="tag">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                        Reconnect & Restore
+                    </span>
+                    <h1 class="hero-title">Immerse Yourself in the <span>Rhythm of Nature</span></h1>
+                    <p class="hero-desc">Discover organic serenity through synthesized natural soundscapes, botanical mindfulness, and interactive tranquil environments.</p>
+                    <div class="hero-cta">
+                        <a href="#soundscape" class="btn btn-primary">
+                            Listen to Nature
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                        <a href="#mindfulness" class="btn btn-secondary">Begin Breathing</a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <div class="card">
-    <h2>Three things, in this order</h2>
-    <ol>
-      <li><b>Put your name on it.</b> Edit <code>index.html</code>, change
-        YOUR NAME HERE above, commit, refresh this page.</li>
-      <li><b>Submit this link.</b> Go to
-        <a href="https://www.calpolyvibecoding.com/">calpolyvibecoding.com</a>,
-        make an account, and paste this URL in. That is how you get counted,
-        and how Claude seats get assigned.</li>
-      <li><b>Then build.</b> Open Gemini, get a page, and replace this entire
-        file with it.</li>
-    </ol>
-  </div>
+        <!-- SOUNDSCAPE GENERATOR -->
+        <section class="soundscape section-padding" id="soundscape">
+            <div class="container">
+                <div class="text-center">
+                    <span class="tag">Procedural Audio Engine</span>
+                    <h2 class="section-title">Generative Ambient Soundscape</h2>
+                    <p class="section-subtitle">Real-time nature audio created dynamically using the Web Audio API. No loops, purely generative organic sounds.</p>
+                </div>
 
-  <div class="card">
-    <h2>How to replace this page</h2>
-    <ol>
-      <li>Copy what Gemini gives you with the <b>copy button</b> on the code
-        block. Do not click and drag.</li>
-      <li>Open <code>index.html</code> here and click the pencil icon.</li>
-      <li><b>Ctrl+A</b> (<b>Cmd+A</b> on Mac), then <b>Delete</b>. All of it.
-        Yes, really.</li>
-      <li>Paste, commit, refresh.</li>
-    </ol>
-  </div>
+                <div class="sound-grid">
+                    <!-- Rain Sound Card -->
+                    <div class="sound-card" id="card-rain">
+                        <div class="sound-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/><path d="M16 14v6M8 14v6M12 16v6"/></svg>
+                        </div>
+                        <h3 class="sound-title">Gentle Rain</h3>
+                        <button class="btn btn-secondary sound-toggle-btn" data-sound="rain">Start Rain</button>
+                        <input type="range" class="volume-slider" min="0" max="1" step="0.01" value="0.5" data-sound="rain" title="Volume">
+                    </div>
 
-  <footer>
-    Nothing on this page is precious. It exists so the link has something to
-    show before you have something of your own.
-  </footer>
+                    <!-- Wind Sound Card -->
+                    <div class="sound-card" id="card-wind">
+                        <div class="sound-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12.8 19.6A2 2 0 1 0 14 16H2"/><path d="M17.5 8a2.5 2.5 0 1 1 2 4H2"/><path d="M9.8 4.4A2 2 0 1 1 11 8H2"/></svg>
+                        </div>
+                        <h3 class="sound-title">Forest Breeze</h3>
+                        <button class="btn btn-secondary sound-toggle-btn" data-sound="wind">Start Breeze</button>
+                        <input type="range" class="volume-slider" min="0" max="1" step="0.01" value="0.5" data-sound="wind" title="Volume">
+                    </div>
 
-</main>
-</body>
-</html>
+                    <!-- Chimes / Birds Sound Card -->
+                    <div class="sound-card" id="card-birds">
+                        <div class="sound-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 7 6 17"/><path d="M21 3 11 13"/><path d="M6 7 16 17"/></svg>
+                        </div>
+                        <h3 class="sound-title">Bamboo Chimes</h3>
+                        <button class="btn btn-secondary sound-toggle-btn" data-sound="birds">Start Chimes</button>
+                        <input type="range" class="volume-slider" min="0" max="1" step="0.01" value="0.5" data-sound="birds" title="Volume">
+                    </div>
+                </div>
+
+                <div class="sound-controls-main">
+                    <button class="btn btn-primary" id="masterAudioToggle">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+                        Mute All Sounds
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- FLORA EXPLORER -->
+        <section class="section-padding" id="flora">
+            <div class="container">
+                <div class="text-center">
+                    <span class="tag">Botanical Sanctuary</span>
+                    <h2 class="section-title">Explore Ecosystems</h2>
+                    <p class="section-subtitle">Discover the remarkable flora that maintains the ecological balance of our planet's diverse biomes.</p>
+                </div>
+
+                <div class="flora-filters">
+                    <button class="filter-btn active" data-filter="all">All Ecosystems</button>
+                    <button class="filter-btn" data-filter="forest">Canopy & Forest</button>
+                    <button class="filter-btn" data-filter="meadow">Wild Meadows</button>
+                    <button class="filter-btn" data-filter="alpine">High Alpine</button>
+                </div>
+
+                <div class="flora-grid" id="floraGrid">
+                    <!-- Cards dynamically rendered via JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- MINDFULNESS BREATHING EXERCISE -->
+        <section class="section-padding" id="mindfulness">
+            <div class="container">
+                <div class="breathing-section">
+                    <span class="tag">Rhythmic Calibration</span>
+                    <h2 class="section-title">Mindful Breathing Circle</h2>
+                    <p class="section-subtitle">Sync your breath with nature. Follow the expanding circle to slow down your heart rate and ground your mind.</p>
+
+                    <div class="breath-container">
+                        <div class="breath-circle-outer"></div>
+                        <div class="breath-circle" id="breathCircle">Start</div>
+                    </div>
+
+                    <div class="breath-instruction" id="breathInstruction">Click 'Start Breathing' to begin</div>
+
+                    <button class="btn btn-primary" id="breathStartBtn">Start Breathing Cycle</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- NATURE REFLECTION JOURNAL -->
+        <section class="section-padding" id="journal">
+            <div class="container">
+                <div class="text-center">
+                    <span class="tag">Daily Reflection</span>
+                    <h2 class="section-title">Nature Thought Log</h2>
+                    <p class="section-subtitle">Take a moment to record a thought, gratitude, or observation from your interactions with nature today.</p>
+                </div>
+
+                <div class="journal-container
